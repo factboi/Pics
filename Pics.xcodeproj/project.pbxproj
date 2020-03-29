@@ -21,6 +21,8 @@
 		CA6BF6A6242D25370077FA6A /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = CA6BF6A5242D25370077FA6A /* TinyConstraints */; };
 		CAF6233524310E4D009FAF9A /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = CAF6233424310E4D009FAF9A /* SDWebImage */; };
 		CAF6233724311187009FAF9A /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6233624311187009FAF9A /* HomeCell.swift */; };
+		CAF6233924312A4A009FAF9A /* LoadingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6233824312A4A009FAF9A /* LoadingFooterView.swift */; };
+		CAF6233B24312A7F009FAF9A /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6233A24312A7F009FAF9A /* Indicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		CA6BF69C242D1A0F0077FA6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA6BF6A2242D1C850077FA6A /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		CAF6233624311187009FAF9A /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		CAF6233824312A4A009FAF9A /* LoadingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingFooterView.swift; sourceTree = "<group>"; };
+		CAF6233A24312A7F009FAF9A /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 				CA6BF68E242D1A0D0077FA6A /* AppDelegate.swift */,
 				CA6BF690242D1A0D0077FA6A /* SceneDelegate.swift */,
 				CA6BF692242D1A0D0077FA6A /* HomeController.swift */,
+				CAF6233824312A4A009FAF9A /* LoadingFooterView.swift */,
+				CAF6233A24312A7F009FAF9A /* Indicator.swift */,
 				CAF6233624311187009FAF9A /* HomeCell.swift */,
 				CA6BF6A2242D1C850077FA6A /* MainTabBarController.swift */,
 				CA6BF697242D1A0F0077FA6A /* Assets.xcassets */,
@@ -189,12 +195,14 @@
 			files = (
 				CA40FFA4243003490018745B /* Endpoint.swift in Sources */,
 				CA6BF693242D1A0D0077FA6A /* HomeController.swift in Sources */,
+				CAF6233B24312A7F009FAF9A /* Indicator.swift in Sources */,
 				CA6BF68F242D1A0D0077FA6A /* AppDelegate.swift in Sources */,
 				CA6BF6A3242D1C850077FA6A /* MainTabBarController.swift in Sources */,
 				CA40FFA6243006010018745B /* UnsplashClient.swift in Sources */,
 				CA40FFA2242FFF860018745B /* UnsplashImage.swift in Sources */,
 				CA6BF691242D1A0D0077FA6A /* SceneDelegate.swift in Sources */,
 				CAF6233724311187009FAF9A /* HomeCell.swift in Sources */,
+				CAF6233924312A4A009FAF9A /* LoadingFooterView.swift in Sources */,
 				CA40FF9C242FF9240018745B /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

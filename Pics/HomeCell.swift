@@ -29,7 +29,7 @@ class HomeCell: UICollectionViewCell {
 	public func set(with photo: Photo?) {
 		guard let pic = photo else {return}
 		imageView.sd_setImage(with: URL(string: pic.urls.regular)) { (_, _, _, _) in
-			UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseIn, animations: {
+			UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseIn, animations: {
 				self.imageView.alpha = 1
 			})
 		}
