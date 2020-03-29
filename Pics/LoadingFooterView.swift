@@ -10,12 +10,34 @@ import UIKit
 
 class LoadingFooterView: UICollectionReusableView {
 	
-	override init(frame: CGRect) {
-		super.init(frame: frame)
-		backgroundColor = .red
+	private let indicator = Indicator()
+
+	private let label: UILabel = {
+		let label = UILabel()
+		label.text = "Loading more..."
+		label.font = .boldSystemFont(ofSize: 17)
+		label.adjustsFontSizeToFitWidth = true
+		label.textAlignment = .center
+		return label
+	}()
+	
+	private func addIndicator() {
+		addSubview(indicator)
+		indicator.centerInSuperview()
+		indicator.height(30)
+		indicator.width(30)
 	}
 	
-	required init?(coder: NSCoder) {
-		super.init(coder: coder)
+	private func addLabel() {
+		addSubview(label)
+		label.edgesToSuperview(excluding: .top, insets: .init(top: 0, left: 16, bottom: 8, right: 16))
+		label.topToBottom(of: indicator)
+	}
+	
+	override func didMoveToSuperview() {
+		super.didMoveToSuperview()
+		addIndicator()
+		indicator.startIndicator()
+		addLabel()
 	}
 }

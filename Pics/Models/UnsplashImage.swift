@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct Photo: Decodable {
+struct Photo: Decodable{
+	
 	let id: String
 	let urls: URLS
 	let width: Int
@@ -26,4 +27,15 @@ struct URLS: Decodable {
 	let regular: String
 	let small: String
 	let thumb: String
+}
+
+extension Photo: Hashable {
+	static func == (lhs: Photo, rhs: Photo) -> Bool {
+		return lhs.id == rhs.id
+	}
+	
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(id)
+	}
+
 }

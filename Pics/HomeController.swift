@@ -10,15 +10,33 @@ import UIKit
 import TinyConstraints
 import SDWebImage
 
+extension Array where Element: Hashable {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
+        }
+    }
+
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
+    }
+}
+
 class HomeController: UIViewController {
 	
 	private let cellId = "cellId"
 	private let footerId = "footerID"
-	
-	private var photos: [Photo] = []
+	private var pageNumber = 0
+	private var isPaginating = false
+	private var photos = Array<Photo>() {
+		didSet {
+			photos.removeDuplicates()
+		}
+	}
 	private let unsplashClient = UnsplashClient()
 	private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-	private let indicator = Indicator()
 	private func setupViews() {
 		view.addSubview(collectionView)
 		collectionView.edgesToSuperview()
@@ -27,10 +45,6 @@ class HomeController: UIViewController {
 		collectionView.backgroundColor = .white
 		collectionView.register(HomeCell.self, forCellWithReuseIdentifier: cellId)
 		collectionView.register(LoadingFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerId)
-		collectionView.addSubview(indicator)
-		indicator.centerInSuperview(usingSafeArea: true)
-		indicator.height(30)
-		indicator.width(30)
 	}
 	
 	override func viewWillLayoutSubviews() {
@@ -39,19 +53,26 @@ class HomeController: UIViewController {
 		
 	}
 	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		indicator.startIndicator()
-		unsplashClient.fetch(.photos(id: UnsplashClient.apiKey, page: 15, perPage: 5, orderBy: .latest)) { (result) in
+	private func fetchPhotos(pageNumber: Int) {
+		unsplashClient.fetch(.photos(id: UnsplashClient.apiKey, page: pageNumber, perPage: 5, orderBy: .latest)) { (result) in
+			self.isPaginating = true
 			switch result {
 			case .success(let photos):
-				self.photos = photos
-				self.indicator.stopIndicator()
-				self.collectionView.reloadSections(IndexSet(integer: 0))
+				self.photos += photos
+				self.collectionView.reloadData()
 			case .error(let error):
 				print("\(error)")
 			}
+			self.isPaginating = false
 		}
+	
+		self.pageNumber += 1
+		print("fetching with page number \(self.pageNumber)")
+	}
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		fetchPhotos(pageNumber: pageNumber)
 	}
 
 }
@@ -65,6 +86,11 @@ extension HomeController: UICollectionViewDataSource, UICollectionViewDelegate, 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomeCell
 		cell.set(with: photos[indexPath.item])
+		
+		if indexPath.item == photos.count - 1 && !isPaginating {
+			self.fetchPhotos(pageNumber: pageNumber)
+		}
+		
 		return cell
 	}
 	
