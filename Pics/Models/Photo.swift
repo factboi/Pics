@@ -9,7 +9,6 @@
 import Foundation
 
 struct Photo: Decodable{
-	
 	let id: String
 	let urls: URLS
 	let width: Int
@@ -19,6 +18,7 @@ struct Photo: Decodable{
 
 struct User: Decodable {
 	let username: String
+	let name: String
 }
 
 struct URLS: Decodable {
@@ -33,9 +33,7 @@ extension Photo: Hashable {
 	static func == (lhs: Photo, rhs: Photo) -> Bool {
 		return lhs.id == rhs.id
 	}
-	
 	func hash(into hasher: inout Hasher) {
 		hasher.combine(id)
 	}
-
 }

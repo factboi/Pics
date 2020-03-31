@@ -25,9 +25,10 @@ class Indicator: UIView {
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
-		
 		setupIndicator()
 	}
+	
+	
 	
 	func startIndicator() {
 		let animate = CABasicAnimation(keyPath: "transform.rotation")

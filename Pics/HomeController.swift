@@ -10,71 +10,84 @@ import UIKit
 import TinyConstraints
 import SDWebImage
 
-extension Array where Element: Hashable {
-    func removingDuplicates() -> [Element] {
-        var addedDict = [Element: Bool]()
-
-        return filter {
-            addedDict.updateValue(true, forKey: $0) == nil
-        }
-    }
-
-    mutating func removeDuplicates() {
-        self = self.removingDuplicates()
-    }
-}
-
 class HomeController: UIViewController {
 	
 	private let cellId = "cellId"
 	private let footerId = "footerID"
 	private var pageNumber = 0
 	private var isPaginating = false
-	private var photos = Array<Photo>() {
-		didSet {
-			photos.removeDuplicates()
-		}
-	}
+	private var isShowingLatest = true
+	private var photos = Array<Photo>()
 	private let unsplashClient = UnsplashClient()
 	private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+	
 	private func setupViews() {
 		view.addSubview(collectionView)
-		collectionView.edgesToSuperview()
+		collectionView.edgesToSuperview(usingSafeArea: true)
 		collectionView.delegate = self
 		collectionView.dataSource = self
 		collectionView.backgroundColor = .white
 		collectionView.register(HomeCell.self, forCellWithReuseIdentifier: cellId)
 		collectionView.register(LoadingFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerId)
+		
+		let changeOrderButton = UIBarButtonItem.init(image: UIImage(systemName: "flame"), style: .plain, target: self, action: #selector(changeOrderButtonClicked(_:)))
+		changeOrderButton.tintColor = .black
+		navigationItem.rightBarButtonItem = changeOrderButton
+	}
+	
+	private var order: Order = .latest {
+		didSet {
+			switch order {
+			case .latest:
+				navigationItem.rightBarButtonItem?.image = UIImage(systemName: "flame")
+			case .popular:
+				navigationItem.rightBarButtonItem?.image = UIImage(systemName: "arrow.up.right")
+			default:
+				return
+			}
+		}
+	}
+	
+	private var isOrderChanged = false {
+		didSet {
+			order = isOrderChanged ? .popular : .latest			
+		}
 	}
 	
 	override func viewWillLayoutSubviews() {
 		super.viewWillLayoutSubviews()
 		setupViews()
-		
 	}
 	
-	private func fetchPhotos(pageNumber: Int) {
-		unsplashClient.fetch(.photos(id: UnsplashClient.apiKey, page: pageNumber, perPage: 5, orderBy: .latest)) { (result) in
+	@objc private func changeOrderButtonClicked(_ sender: UIBarButtonItem) {
+		isOrderChanged = !isOrderChanged
+		pageNumber = 0
+		photos.removeAll()
+		fetchPhotos(pageNumber: pageNumber, order: order)
+		collectionView.reloadSections(.init(integer: .zero))
+		collectionView.setContentOffset(.zero, animated: true)
+	}
+	
+	private func fetchPhotos(pageNumber: Int, order: Order) {
+		unsplashClient.fetch(.photos(clientId: UnsplashClient.apiKey, page: pageNumber, perPage: 15, orderBy: order)) { (result) in
 			self.isPaginating = true
 			switch result {
 			case .success(let photos):
 				self.photos += photos
+				self.photos.removeDuplicates()
 				self.collectionView.reloadData()
 			case .error(let error):
 				print("\(error)")
 			}
 			self.isPaginating = false
 		}
-	
 		self.pageNumber += 1
-		print("fetching with page number \(self.pageNumber)")
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		fetchPhotos(pageNumber: pageNumber)
+		fetchPhotos(pageNumber: pageNumber, order: order)
 	}
-
 }
 
 extension HomeController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -88,7 +101,9 @@ extension HomeController: UICollectionViewDataSource, UICollectionViewDelegate, 
 		cell.set(with: photos[indexPath.item])
 		
 		if indexPath.item == photos.count - 1 && !isPaginating {
-			self.fetchPhotos(pageNumber: pageNumber)
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+				self.fetchPhotos(pageNumber: self.pageNumber, order: self.order)
+			}
 		}
 		
 		return cell

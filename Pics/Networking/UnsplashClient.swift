@@ -16,4 +16,9 @@ class UnsplashClient: ApiClient {
 		let request = endpoint.request
 		get(request, completion: completion)
 	}
+	
+	func fetchCollections(_ endpoint: UnsplashEndpoint, completion: @escaping (Result<[Collection]>) -> Void) {
+		let request = endpoint.request
+		get(request, completion: completion)
+	}
 }
