@@ -13,10 +13,15 @@ struct Collection: Decodable {
 	let title: String
 	let coverPhoto: CoverPhoto
 	let user: User
+	let links: Links
 	private enum CodingKeys: String, CodingKey {
-		case id, title, user
+		case id, title, user, links
 		case coverPhoto = "cover_photo"
 	}
+}
+
+struct Links: Decodable {
+	let photos: String
 }
 
 struct CoverPhoto: Decodable {

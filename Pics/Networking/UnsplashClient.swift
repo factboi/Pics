@@ -21,4 +21,10 @@ class UnsplashClient: ApiClient {
 		let request = endpoint.request
 		get(request, completion: completion)
 	}
+	
+	func fetchCollectionPhotos(_ endpoint: UnsplashEndpoint, completion: @escaping (Result<[Photo]>) -> Void) {
+		let request = endpoint.request
+		get(request, completion: completion)
+	}
+	
 }

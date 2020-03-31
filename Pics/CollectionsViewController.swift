@@ -54,9 +54,13 @@ class CollectionsViewController: UIViewController {
 		self.pageNumber += 1
 	}
 	
+	override func viewWillLayoutSubviews() {
+		super.viewWillLayoutSubviews()
+		setupViews()
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setupViews()
 		getCollections(page: pageNumber)
 	}
 }
@@ -77,6 +81,11 @@ extension CollectionsViewController: UICollectionViewDelegate, UICollectionViewD
 		}
 		
 		return cell
+	}
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let detail = CollectionDetailViewController(collection: collections[indexPath.item])
+		navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+		navigationController?.pushViewController(detail, animated: true)
 	}
 	func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 		let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerId, for: indexPath)

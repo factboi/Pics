@@ -22,6 +22,7 @@
 		CA6BF6A3242D1C850077FA6A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6BF6A2242D1C850077FA6A /* MainTabBarController.swift */; };
 		CA6BF6A6242D25370077FA6A /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = CA6BF6A5242D25370077FA6A /* TinyConstraints */; };
 		CAEBB3722433C3B5008D63D8 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBB3712433C3B5008D63D8 /* CollectionCell.swift */; };
+		CAEBB3742433CAB6008D63D8 /* CollectionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBB3732433CAB6008D63D8 /* CollectionDetailViewController.swift */; };
 		CAF6233524310E4D009FAF9A /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = CAF6233424310E4D009FAF9A /* SDWebImage */; };
 		CAF6233724311187009FAF9A /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6233624311187009FAF9A /* HomeCell.swift */; };
 		CAF6233924312A4A009FAF9A /* LoadingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6233824312A4A009FAF9A /* LoadingFooterView.swift */; };
@@ -45,6 +46,7 @@
 		CA6BF69C242D1A0F0077FA6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA6BF6A2242D1C850077FA6A /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		CAEBB3712433C3B5008D63D8 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
+		CAEBB3732433CAB6008D63D8 /* CollectionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDetailViewController.swift; sourceTree = "<group>"; };
 		CAF6233624311187009FAF9A /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		CAF6233824312A4A009FAF9A /* LoadingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingFooterView.swift; sourceTree = "<group>"; };
 		CAF6233A24312A7F009FAF9A /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				CA6BF699242D1A0F0077FA6A /* LaunchScreen.storyboard */,
 				CA6BF69C242D1A0F0077FA6A /* Info.plist */,
 				CAEBB3712433C3B5008D63D8 /* CollectionCell.swift */,
+				CAEBB3732433CAB6008D63D8 /* CollectionDetailViewController.swift */,
 			);
 			path = Pics;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				CAF6233724311187009FAF9A /* HomeCell.swift in Sources */,
 				CA12306F24329CF30009AB61 /* CollectionsViewController.swift in Sources */,
 				CAF6233924312A4A009FAF9A /* LoadingFooterView.swift in Sources */,
+				CAEBB3742433CAB6008D63D8 /* CollectionDetailViewController.swift in Sources */,
 				CA40FF9C242FF9240018745B /* ApiClient.swift in Sources */,
 				CAEBB3722433C3B5008D63D8 /* CollectionCell.swift in Sources */,
 			);
