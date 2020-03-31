@@ -14,10 +14,13 @@ class MainTabBarController: UITabBarController {
 		super.viewDidLoad()
 		guard let photosImage = UIImage(systemName: "photo") else { return }
 		guard let gridImage = UIImage(systemName: "rectangle.grid.2x2.fill") else { return }
+		guard let searchImage = UIImage(systemName: "magnifyingglass") else { return }
+		let searchViewController = UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: "search")
 		
 		viewControllers = [
 			createNavigationController(vc: CollectionsViewController(), title: "Collections", image: gridImage),
 			createNavigationController(vc: HomeController(), title: "Photos", image: photosImage),
+			createNavigationController(vc: searchViewController, title: "Search", image: searchImage),
 		]
 		tabBar.barStyle = .black
 		tabBar.isTranslucent = false
