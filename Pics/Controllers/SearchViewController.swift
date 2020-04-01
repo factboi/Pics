@@ -22,6 +22,7 @@ class SearchViewController: UITableViewController {
 		searchController.searchBar.searchBarStyle = .minimal
 		searchController.searchBar.autocorrectionType = .no
 		searchController.searchBar.autocapitalizationType = .none
+		searchController.searchBar.returnKeyType = .default
 	}
 	
 	override func viewWillLayoutSubviews() {
@@ -40,29 +41,61 @@ class SearchViewController: UITableViewController {
 		tableView.deselectRow(at: indexPath, animated: true)
 		guard let searchTerm = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
 		if searchTerm.isEmpty {
-			print("nahuy")
+			print("nope")
 		} else {
-			print(searchTerm)
+			switch indexPath.item {
+			case 0:
+				let searchPhotosViewController = SearchPhotosViewController(searchTerm: searchTerm)
+				navigationController?.pushViewController(searchPhotosViewController, animated: true)
+			case 1:
+				let searchCollectionsViewController = SearchCollectionsViewController(searchTerm: searchTerm)
+				navigationController?.pushViewController(searchCollectionsViewController, animated: true)
+			default: return
+			}
 		}
 	}
 }
 
-extension SearchViewController: UISearchBarDelegate {
+extension SearchViewController: UISearchBarDelegate, UITextFieldDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		if searchText.isEmpty {
+			collectionsSearchLabel.text = ""
+			photosSearchLabel.text = ""
+			tableView.setEmptyView()
+		} else {
+			tableView.restore()
+			collectionsSearchLabel.text = "Collections With: '\(searchText)'"
+			photosSearchLabel.text = "Photos With: '\(searchText)'"
+			print(searchText)
+		}
+	}
+	
+	func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+		guard let searchText = searchBar.text else { return }
 		if searchText.isEmpty {
 			tableView.setEmptyView()
 		} else {
 			tableView.restore()
+			collectionsSearchLabel.text = "Collections With: '\(searchText)'"
+			photosSearchLabel.text = "Photos With: '\(searchText)'"
 		}
-		collectionsSearchLabel.text = "Collections With: '\(searchText)'"
-		photosSearchLabel.text = "Photos With: '\(searchText)'"
-		print(searchText)
 	}
+	
 	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+		searchBar.text = ""
 		collectionsSearchLabel.text = ""
 		photosSearchLabel.text = ""
-		
 		tableView.setEmptyView()
+	}
+	func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+		searchBar.resignFirstResponder()
+		collectionsSearchLabel.text = ""
+		photosSearchLabel.text = ""
+		tableView.setEmptyView()
+	}
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		view.endEditing(false)
+		return false
 	}
 }
 

@@ -8,20 +8,25 @@
 
 import Foundation
 
-struct Photo: Decodable{
+class PhotoSearchObject: Codable {
+	let total: Int
+	let results: [Photo]
+}
+
+struct Photo: Codable {
 	let id: String
-	let urls: URLS
+	let urls: Urls
 	let width: Int
 	let height: Int
 	let user: User
 }
 
-struct User: Decodable {
+struct User: Codable {
 	let username: String
 	let name: String
 }
 
-struct URLS: Decodable {
+struct Urls: Codable {
 	let raw: String
 	let full: String
 	let regular: String

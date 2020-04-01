@@ -8,7 +8,12 @@
 
 import Foundation
 
-struct Collection: Decodable {
+class CollectionSearchObject: Codable {
+	let total: Int
+	let results: [Collection]
+}
+
+struct Collection: Codable {
 	let id: Int
 	let title: String
 	let coverPhoto: CoverPhoto
@@ -20,13 +25,13 @@ struct Collection: Decodable {
 	}
 }
 
-struct Links: Decodable {
+struct Links: Codable {
 	let photos: String
 }
 
-struct CoverPhoto: Decodable {
+struct CoverPhoto: Codable {
 	let id: String
-	let urls: URLS
+	let urls: Urls
 }
 
 extension Collection: Hashable {

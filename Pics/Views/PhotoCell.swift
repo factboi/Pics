@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class HomeCell: UICollectionViewCell {
+class PhotoCell: UICollectionViewCell {
 	
 	private let imageView: UIImageView = {
 		let iv = UIImageView()

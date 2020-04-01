@@ -19,17 +19,22 @@ enum ApiError: Error {
 }
 
 protocol ApiClient {
-	func get<T: Decodable>(_ request: URLRequest, completion: @escaping(Result<[T]>) -> Void)
+	func getPhotos(page: Int, perPage: Int, order: Order, completion: @escaping (Result<[Photo]>) -> Void)
+	func getCollections(page: Int, perPage: Int, completion: @escaping (Result<[Collection]>) -> Void)
+	func getCollectionPhotos(collectionId: Int, page: Int, perPage: Int, completion: @escaping (Result<[Photo]>) -> Void)
+	func getPhotos(searchTerm: String, page: Int, perPage: Int, order: SearchOrder, completion: @escaping (Result<PhotoSearchObject>) -> Void)
+	func getCollections(searchTerm: String , page: Int, perPage: Int, completion: @escaping (Result<CollectionSearchObject>) -> Void)
+	func get<T: Codable>(_ request: URLRequest, completion: @escaping(Result<T>) -> Void)
 }
 
 extension ApiClient {
-	func get<T: Decodable>(_ request: URLRequest, completion: @escaping(Result<[T]>) -> Void) {
+	func get<T: Codable>(_ request: URLRequest, completion: @escaping(Result<T>) -> Void) {
 		AF.request(request).responseJSON { (response) in
 			guard let data = response.data else {
 				completion(.error(.unknown))
 				return
 			}
-			guard let value = try? JSONDecoder().decode([T].self, from: data) else {
+			guard let value = try? JSONDecoder().decode(T.self, from: data) else {
 				completion(.error(.jsonDecoder))
 				return
 			}
@@ -38,5 +43,7 @@ extension ApiClient {
 			}
 		}
 	}
+	
+	
+	
 }
-

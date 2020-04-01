@@ -38,10 +38,10 @@ class CollectionsViewController: UIViewController {
 	}
 	
 	
-	private func getCollections(page: Int) {
-		unsplashClient.fetchCollections(.collections(clientId: UnsplashClient.apiKey, page: page, perPage: 10)) { (res) in
+	private func getCollections(pageNumber: Int) {
+		unsplashClient.getCollections(page: pageNumber, perPage: 10) { (result) in
 			self.isPaginating = true
-			switch res {
+			switch result {
 			case .success(let collections):
 				self.collections += collections
 				self.collections.removeDuplicates()
@@ -61,7 +61,7 @@ class CollectionsViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		getCollections(page: pageNumber)
+		getCollections(pageNumber: pageNumber)
 	}
 }
 
@@ -76,7 +76,7 @@ extension CollectionsViewController: UICollectionViewDelegate, UICollectionViewD
 		
 		if indexPath.item == collections.count - 1 && !isPaginating {
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-				self.getCollections(page: self.pageNumber)
+				self.getCollections(pageNumber: self.pageNumber)
 			}
 		}
 		

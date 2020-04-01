@@ -14,6 +14,7 @@
 		CA40FFA2242FFF860018745B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40FFA1242FFF860018745B /* Photo.swift */; };
 		CA40FFA4243003490018745B /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40FFA3243003490018745B /* Endpoint.swift */; };
 		CA40FFA6243006010018745B /* UnsplashClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40FFA5243006010018745B /* UnsplashClient.swift */; };
+		CA5BF34A243518A600CD0272 /* SearchCollectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF349243518A600CD0272 /* SearchCollectionsViewController.swift */; };
 		CA6BF68F242D1A0D0077FA6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6BF68E242D1A0D0077FA6A /* AppDelegate.swift */; };
 		CA6BF691242D1A0D0077FA6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6BF690242D1A0D0077FA6A /* SceneDelegate.swift */; };
 		CA6BF693242D1A0D0077FA6A /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6BF692242D1A0D0077FA6A /* HomeController.swift */; };
@@ -25,8 +26,9 @@
 		CAEBB3742433CAB6008D63D8 /* CollectionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBB3732433CAB6008D63D8 /* CollectionDetailViewController.swift */; };
 		CAEBB3772433DAB9008D63D8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBB3752433DAB9008D63D8 /* SearchViewController.swift */; };
 		CAEBB37C2433DBEA008D63D8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAEBB37B2433DBEA008D63D8 /* Search.storyboard */; };
+		CAEBB37E2433EF96008D63D8 /* SearchPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBB37D2433EF96008D63D8 /* SearchPhotosViewController.swift */; };
 		CAF6233524310E4D009FAF9A /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = CAF6233424310E4D009FAF9A /* SDWebImage */; };
-		CAF6233724311187009FAF9A /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6233624311187009FAF9A /* HomeCell.swift */; };
+		CAF6233724311187009FAF9A /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6233624311187009FAF9A /* PhotoCell.swift */; };
 		CAF6233924312A4A009FAF9A /* LoadingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6233824312A4A009FAF9A /* LoadingFooterView.swift */; };
 		CAF6233B24312A7F009FAF9A /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6233A24312A7F009FAF9A /* Indicator.swift */; };
 		CAF6233E24313CAB009FAF9A /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6233D24313CAB009FAF9A /* Array+Extension.swift */; };
@@ -39,6 +41,7 @@
 		CA40FFA1242FFF860018745B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		CA40FFA3243003490018745B /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		CA40FFA5243006010018745B /* UnsplashClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashClient.swift; sourceTree = "<group>"; };
+		CA5BF349243518A600CD0272 /* SearchCollectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionsViewController.swift; sourceTree = "<group>"; };
 		CA6BF68B242D1A0D0077FA6A /* Pics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA6BF68E242D1A0D0077FA6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA6BF690242D1A0D0077FA6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,7 +54,8 @@
 		CAEBB3732433CAB6008D63D8 /* CollectionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDetailViewController.swift; sourceTree = "<group>"; };
 		CAEBB3752433DAB9008D63D8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CAEBB37B2433DBEA008D63D8 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
-		CAF6233624311187009FAF9A /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		CAEBB37D2433EF96008D63D8 /* SearchPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPhotosViewController.swift; sourceTree = "<group>"; };
+		CAF6233624311187009FAF9A /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		CAF6233824312A4A009FAF9A /* LoadingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingFooterView.swift; sourceTree = "<group>"; };
 		CAF6233A24312A7F009FAF9A /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		CAF6233D24313CAB009FAF9A /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
@@ -90,6 +94,32 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		CA5BF34724350E8C00CD0272 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CAEBB3752433DAB9008D63D8 /* SearchViewController.swift */,
+				CAEBB37B2433DBEA008D63D8 /* Search.storyboard */,
+				CA12306E24329CF30009AB61 /* CollectionsViewController.swift */,
+				CA6BF692242D1A0D0077FA6A /* HomeController.swift */,
+				CA6BF6A2242D1C850077FA6A /* MainTabBarController.swift */,
+				CAEBB3732433CAB6008D63D8 /* CollectionDetailViewController.swift */,
+				CAEBB37D2433EF96008D63D8 /* SearchPhotosViewController.swift */,
+				CA5BF349243518A600CD0272 /* SearchCollectionsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CA5BF34824350EBD00CD0272 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CAF6233624311187009FAF9A /* PhotoCell.swift */,
+				CAEBB3712433C3B5008D63D8 /* CollectionCell.swift */,
+				CAF6233824312A4A009FAF9A /* LoadingFooterView.swift */,
+				CAF6233A24312A7F009FAF9A /* Indicator.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CA6BF682242D1A0D0077FA6A = {
 			isa = PBXGroup;
 			children = (
@@ -112,24 +142,16 @@
 		CA6BF68D242D1A0D0077FA6A /* Pics */ = {
 			isa = PBXGroup;
 			children = (
+				CA5BF34824350EBD00CD0272 /* Views */,
+				CA5BF34724350E8C00CD0272 /* Controllers */,
 				CAF6233C24313C9B009FAF9A /* Helpers */,
 				CA40FFA0242FFF7A0018745B /* Models */,
 				CA40FF9A242FF9160018745B /* Networking */,
 				CA6BF68E242D1A0D0077FA6A /* AppDelegate.swift */,
 				CA6BF690242D1A0D0077FA6A /* SceneDelegate.swift */,
-				CAF6233824312A4A009FAF9A /* LoadingFooterView.swift */,
-				CAF6233A24312A7F009FAF9A /* Indicator.swift */,
-				CAF6233624311187009FAF9A /* HomeCell.swift */,
-				CA6BF6A2242D1C850077FA6A /* MainTabBarController.swift */,
-				CA6BF692242D1A0D0077FA6A /* HomeController.swift */,
-				CA12306E24329CF30009AB61 /* CollectionsViewController.swift */,
 				CA6BF697242D1A0F0077FA6A /* Assets.xcassets */,
 				CA6BF699242D1A0F0077FA6A /* LaunchScreen.storyboard */,
 				CA6BF69C242D1A0F0077FA6A /* Info.plist */,
-				CAEBB3712433C3B5008D63D8 /* CollectionCell.swift */,
-				CAEBB3732433CAB6008D63D8 /* CollectionDetailViewController.swift */,
-				CAEBB3752433DAB9008D63D8 /* SearchViewController.swift */,
-				CAEBB37B2433DBEA008D63D8 /* Search.storyboard */,
 			);
 			path = Pics;
 			sourceTree = "<group>";
@@ -224,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA40FFA4243003490018745B /* Endpoint.swift in Sources */,
+				CA5BF34A243518A600CD0272 /* SearchCollectionsViewController.swift in Sources */,
 				CA6BF693242D1A0D0077FA6A /* HomeController.swift in Sources */,
 				CAF6233B24312A7F009FAF9A /* Indicator.swift in Sources */,
 				CAEBB3772433DAB9008D63D8 /* SearchViewController.swift in Sources */,
@@ -232,9 +255,10 @@
 				CA6BF68F242D1A0D0077FA6A /* AppDelegate.swift in Sources */,
 				CA6BF6A3242D1C850077FA6A /* MainTabBarController.swift in Sources */,
 				CA40FFA6243006010018745B /* UnsplashClient.swift in Sources */,
+				CAEBB37E2433EF96008D63D8 /* SearchPhotosViewController.swift in Sources */,
 				CA40FFA2242FFF860018745B /* Photo.swift in Sources */,
 				CA6BF691242D1A0D0077FA6A /* SceneDelegate.swift in Sources */,
-				CAF6233724311187009FAF9A /* HomeCell.swift in Sources */,
+				CAF6233724311187009FAF9A /* PhotoCell.swift in Sources */,
 				CA12306F24329CF30009AB61 /* CollectionsViewController.swift in Sources */,
 				CAF6233924312A4A009FAF9A /* LoadingFooterView.swift in Sources */,
 				CAEBB3742433CAB6008D63D8 /* CollectionDetailViewController.swift in Sources */,

@@ -16,7 +16,6 @@ class HomeController: UIViewController {
 	private let footerId = "footerID"
 	private var pageNumber = 0
 	private var isPaginating = false
-	private var isShowingLatest = true
 	private var photos = Array<Photo>()
 	private let unsplashClient = UnsplashClient()
 	private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -27,7 +26,7 @@ class HomeController: UIViewController {
 		collectionView.delegate = self
 		collectionView.dataSource = self
 		collectionView.backgroundColor = .white
-		collectionView.register(HomeCell.self, forCellWithReuseIdentifier: cellId)
+		collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: cellId)
 		collectionView.register(LoadingFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerId)
 		
 		let changeOrderButton = UIBarButtonItem.init(image: UIImage(systemName: "flame"), style: .plain, target: self, action: #selector(changeOrderButtonClicked(_:)))
@@ -69,20 +68,21 @@ class HomeController: UIViewController {
 	}
 	
 	private func fetchPhotos(pageNumber: Int, order: Order) {
-		unsplashClient.fetch(.photos(clientId: UnsplashClient.apiKey, page: pageNumber, perPage: 15, orderBy: order)) { (result) in
+		unsplashClient.getPhotos(page: pageNumber, perPage: 10, order: order) { (res) in
 			self.isPaginating = true
-			switch result {
+			switch res {
 			case .success(let photos):
 				self.photos += photos
 				self.photos.removeDuplicates()
 				self.collectionView.reloadData()
-			case .error(let error):
-				print("\(error)")
+			case .error(let err):
+				print(err)
 			}
 			self.isPaginating = false
 		}
 		self.pageNumber += 1
 	}
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -97,7 +97,7 @@ extension HomeController: UICollectionViewDataSource, UICollectionViewDelegate, 
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomeCell
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PhotoCell
 		cell.set(with: photos[indexPath.item])
 		
 		if indexPath.item == photos.count - 1 && !isPaginating {
